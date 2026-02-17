@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNS絶対成功させるくん - LP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  font-family: 'Noto Sans JP', ui-sans-serif, system-ui, sans-serif;
+}
+body {
+  margin: 0;
+  line-height: inherit;
+  font-family: 'Noto Sans JP', sans-serif;
+  scroll-behavior: smooth;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+button, input, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+button {
+  cursor: pointer;
+  background-color: transparent;
+  background-image: none;
+}
+
+/* Layout */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-6 { gap: 1.5rem; }
+
+/* Sizing */
+.w-full { width: 100%; }
+.h-16 { height: 4rem; }
+.h-48 { height: 12rem; }
+.h-auto { height: auto; }
+.min-h-screen { min-height: 100vh; }
+.max-w-sm { max-width: 24rem; }
+.max-w-md { max-width: 28rem; }
+.max-w-xl { max-width: 36rem; }
+
+/* Spacing */
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.px-8 { padding-left: 2rem; padding-right: 2rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+.p-2 { padding: 0.5rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+
+/* Position */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.sticky { position: sticky; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.inset-x-0 { left: 0; right: 0; }
+.top-0 { top: 0; }
+.top-10 { top: 2.5rem; }
+.top-1\/2 { top: 50%; }
+.bottom-10 { bottom: 2.5rem; }
+.-translate-y-1\/2 { transform: translateY(-50%); }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-50 { z-index: 50; }
+
+/* Typography */
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.font-medium { font-weight: 500; }
+.font-bold { font-weight: 700; }
+.font-black { font-weight: 900; }
+.tracking-tight { letter-spacing: -0.025em; }
+.leading-tight { line-height: 1.25; }
+.text-center { text-align: center; }
+.whitespace-pre-wrap { white-space: pre-wrap; }
+
+/* Colors */
+.text-white { color: #ffffff; }
+.text-black { color: #000000; }
+.text-gray-400 { color: #9ca3af; }
+.text-gray-600 { color: #4b5563; }
+.text-gray-700 { color: #374151; }
+.text-gray-900 { color: #111827; }
+.bg-white { background-color: #ffffff; }
+.bg-white\/90 { background-color: rgba(255, 255, 255, 0.9); }
+.bg-gray-50 { background-color: #f9fafb; }
+.bg-gray-100 { background-color: #f3f4f6; }
+.bg-gray-900 { background-color: #111827; }
+.bg-blue-600 { background-color: #2563eb; }
+
+/* Borders */
+.border { border-width: 1px; }
+.border-gray-300 { border-color: #d1d5db; }
+.rounded-md { border-radius: 0.375rem; }
+.rounded-full { border-radius: 9999px; }
+.rounded-lg { border-radius: 0.5rem; }
+
+/* Shadows */
+.shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+.shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1); }
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+
+/* Effects */
+.opacity-70 { opacity: 0.7; }
+.overflow-hidden { overflow: hidden; }
+.backdrop-blur-md { backdrop-filter: blur(12px); }
+.pointer-events-none { pointer-events: none; }
+.drop-shadow-text { filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)); }
+
+/* Transitions */
+.transition-colors { transition-property: color, background-color, border-color; transition-duration: 150ms; }
+.transition-transform { transition-property: transform; transition-duration: 150ms; }
+.transition-all { transition-property: all; transition-duration: 150ms; }
+
+/* Interactive States */
+.hover\:text-blue-600:hover { color: #2563eb; }
+.hover\:bg-blue-700:hover { background-color: #1d4ed8; }
+.hover\:bg-gray-100:hover { background-color: #f3f4f6; }
+.hover\:scale-105:hover { transform: scale(1.05); }
+.active\:scale-95:active { transform: scale(0.95); }
+.focus\:border-blue-500:focus { border-color: #3b82f6; }
+.focus\:ring-blue-500:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #3b82f6;
+}
+
+/* Display */
+.block { display: block; }
+.hidden { display: none; }
+
+/* Form Elements */
+input, textarea {
+  appearance: none;
+  background-color: #fff;
+}
+input:focus, textarea:focus {
+  outline: none;
+}
+
+/* Responsive - md (768px) */
+@media (min-width: 768px) {
+  .md\:flex { display: flex; }
+  .md\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+  .md\:max-w-xl { max-width: 36rem; }
+  .md\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+}
+
+/* Responsive - lg (1024px) */
+@media (min-width: 1024px) {
+  .lg\:max-w-2xl { max-width: 42rem; }
+}
+  
+  body { margin: 0; font-family: 'Noto Sans JP', sans-serif; background: #f9fafb; }
+  .header { position:sticky;top:0; z-index:50; display:flex; height:80px; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.9); padding:0 32px; box-shadow:0 1px 3px rgba(0,0,0,0.1); backdrop-filter:blur(8px); }
+  .header-logo { font-size:1.25rem; font-weight:700; color:#2563eb; }
+  .header-cta { display:inline-block; background:#2563eb; color:#fff; padding:8px 24px; border-radius:9999px; font-size:0.875rem; font-weight:700; text-decoration:none; box-shadow:0 4px 6px rgba(37,99,235,0.3); transition:transform 0.15s; }
+  .header-cta:hover { transform:scale(1.05); }
+  .main-content { max-width:768px; margin:0 auto; background:#fff; box-shadow:0 25px 50px -12px rgba(0,0,0,0.15); }
+  .footer { background:#111827; padding:32px; text-align:center; color:#fff; font-size:0.875rem; opacity:0.7; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-logo"></div>
+    <a href="#contact" class="header-cta"></a>
+  </header>
+  <main class="main-content">
+    <section style="position:relative;width:100%;overflow:hidden;">
+      
+      <img src="https://jqpavdhxvmvuhwrbnosd.supabase.co/storage/v1/object/public/images/inpaint-1771315566665-295424368.png" alt="hero" style="display:block;width:100%;height:auto;filter: brightness(100%) grayscale(0%)" class="desktop-img" />
+      
+    </section>
+    <section style="position:relative;width:100%;overflow:hidden;">
+      
+      <img src="https://jqpavdhxvmvuhwrbnosd.supabase.co/storage/v1/object/public/images/sections/97/cropped_6091_1771315616760.png" alt="other" style="display:block;width:100%;height:auto;filter: brightness(100%) grayscale(0%)" class="desktop-img" />
+      
+    </section>
+    <section style="position:relative;width:100%;overflow:hidden;">
+      
+      <img src="https://jqpavdhxvmvuhwrbnosd.supabase.co/storage/v1/object/public/images/template-gen-1771235412863-623564803.png" alt="other" style="display:block;width:100%;height:auto;filter: brightness(100%) grayscale(0%)" class="desktop-img" />
+      
+    </section>
+    <section style="position:relative;width:100%;overflow:hidden;">
+      
+      <img src="https://jqpavdhxvmvuhwrbnosd.supabase.co/storage/v1/object/public/images/template-gen-1771235458888-495724075.png" alt="other" style="display:block;width:100%;height:auto;filter: brightness(100%) grayscale(0%)" class="desktop-img" />
+      
+    </section>
+    <section style="position:relative;width:100%;overflow:hidden;">
+      
+      <img src="https://jqpavdhxvmvuhwrbnosd.supabase.co/storage/v1/object/public/images/template-gen-1771235494454-541358044.png" alt="other" style="display:block;width:100%;height:auto;filter: brightness(100%) grayscale(0%)" class="desktop-img" />
+      
+    </section>
+    <section style="position:relative;width:100%;overflow:hidden;">
+      
+      <img src="https://jqpavdhxvmvuhwrbnosd.supabase.co/storage/v1/object/public/images/template-gen-1771235539534-507291372.png" alt="other" style="display:block;width:100%;height:auto;filter: brightness(100%) grayscale(0%)" class="desktop-img" />
+      
+    </section>
+    <section style="position:relative;width:100%;overflow:hidden;">
+      
+      <img src="https://jqpavdhxvmvuhwrbnosd.supabase.co/storage/v1/object/public/images/template-gen-1771235576173-892354719.png" alt="other" style="display:block;width:100%;height:auto;filter: brightness(100%) grayscale(0%)" class="desktop-img" />
+      
+    </section>
+    <section style="position:relative;width:100%;overflow:hidden;">
+      
+      <img src="https://jqpavdhxvmvuhwrbnosd.supabase.co/storage/v1/object/public/images/template-gen-1771235615012-659901476.png" alt="other" style="display:block;width:100%;height:auto;filter: brightness(100%) grayscale(0%)" class="desktop-img" />
+      
+    </section>
+    <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ</title>
+  <style>
+    :root {
+      --color-primary: #0077cc;
+      --color-text: #333;
+      --color-text-muted: #777;
+      --color-border: #ccc;
+      --color-error: #d32f2f;
+      --color-bg: #f9f9f9;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+      line-height: 1.6;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      padding: 48px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--color-text-muted);
+    }
+
+    .progress-bar {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 720px;
+      margin-bottom: 40px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .progress-bar li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 33.33%;
+      text-align: center;
+    }
+
+    .progress-bar li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      left: 0;
+      transform: translateY(-50%);
+      height: 2px;
+      background-color: var(--color-border);
+      z-index: -1;
+    }
+
+    .progress-bar li.active {
+      color: var(--color-primary);
+      font-weight: bold;
+    }
+
+    .progress-bar li.completed::after {
+      background-color: var(--color-primary);
+    }
+
+    .form-container {
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    label .required {
+      color: var(--color-error);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid var(--color-border);
+      transition: border-color 150ms ease;
+      color: var(--color-text);
+      background-color: #fff;
+      border-radius: 4px;
+    }
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    input[type="text"]::placeholder,
+    input[type="email"]::placeholder,
+    input[type="tel"]::placeholder,
+    textarea::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--color-primary);
+      outline: none;
+    }
+
+    .error {
+      border-color: var(--color-error) !important;
+    }
+
+    .error-message {
+      font-size: 12px;
+      color: var(--color-error);
+      margin-top: 4px;
+    }
+
+    button {
+      background-color: var(--color-primary);
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 150ms ease;
+      border-radius: 6px;
+    }
+
+    button:hover {
+      filter: brightness(0.92);
+    }
+
+    button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .confirmation-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 32px;
+    }
+
+    .confirmation-table th {
+      width: 30%;
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .confirmation-table td {
+      width: 70%;
+      padding: 12px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .confirmation-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .confirmation-actions button {
+      width: 48%;
+    }
+
+    .success-message {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .success-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 24px;
+      font-size: 32px;
+    }
+
+    .loading-spinner {
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 4px solid white;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      margin-left: 8px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>お問い合わせ</h1>
+  <p>下記フォームよりお気軽にお問い合わせください。</p>
+
+  <ul class="progress-bar">
+    <li class="active">入力</li>
+    <li>確認</li>
+    <li>完了</li>
+  </ul>
+
+  <div class="form-container">
+    <form id="contactForm" role="form" aria-label="お問い合わせフォーム">
+      <div id="step1">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="companyName">会社名</label>
+            <input type="text" id="companyName" name="companyName" placeholder="株式会社〇〇">
+          </div>
+          <div class="form-group">
+            <label for="name"><span class="required">*</span>お名前</label>
+            <input type="text" id="name" name="name" placeholder="山田 太郎" aria-required="true">
+            <div id="name-error" class="error-message" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email"><span class="required">*</span>メールアドレス</label>
+          <input type="email" id="email" name="email" placeholder="example@company.co.jp" aria-required="true">
+          <div id="email-error" class="error-message" aria-live="polite"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="tel">電話番号</label>
+          <input type="tel" id="tel" name="tel" placeholder="03-0000-0000">
+          <div id="tel-error" class="error-message" aria-live="polite"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="inquiryType"><span class="required">*</span>お問い合わせ種別</label>
+          <select id="inquiryType" name="inquiryType" aria-required="true">
+            <option value="">選択してください</option>
+            <option value="サービスについて">サービスについて</option>
+            <option value="お見積もり依頼">お見積もり依頼</option>
+            <option value="採用について">採用について</option>
+            <option value="その他">その他</option>
+          </select>
+          <div id="inquiryType-error" class="error-message" aria-live="polite"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="inquiryContent"><span class="required">*</span>お問い合わせ内容</label>
+          <textarea id="inquiryContent" name="inquiryContent" placeholder="お問い合わせ内容をご記入ください" aria-required="true"></textarea>
+          <div id="inquiryContent-error" class="error-message" aria-live="polite"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">備考・ご要望（任意）</label>
+          <textarea id="notes" name="notes" placeholder="納期のご希望や参考URLなど、何でもご自由にご記入ください"></textarea>
+        </div>
+
+        <button type="button" id="confirmButton">確認画面へ</button>
+      </div>
+
+      <div id="step2" style="display: none;">
+        <h2>入力内容のご確認</h2>
+        <table class="confirmation-table">
+          <tr>
+            <th>会社名</th>
+            <td id="confirmCompanyName"></td>
+          </tr>
+          <tr>
+            <th>お名前</th>
+            <td id="confirmName"></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td id="confirmEmail"></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td id="confirmTel"></td>
+          </tr>
+          <tr>
+            <th>お問い合わせ種別</th>
+            <td id="confirmInquiryType"></td>
+          </tr>
+          <tr>
+            <th>お問い合わせ内容</th>
+            <td id="confirmInquiryContent"></td>
+          </tr>
+          <tr>
+            <th>備考・ご要望</th>
+            <td id="confirmNotes"></td>
+          </tr>
+        </table>
+
+        <div class="confirmation-actions">
+          <button type="button" id="backButton">戻る</button>
+          <button type="button" id="submitButton">送信する</button>
+        </div>
+      </div>
+
+      <div id="step3" style="display: none;">
+        <div class="success-icon">✓</div>
+        <div class="success-message" role="status">送信が完了しました。</div>
+        <p>2営業日以内にご連絡いたします。</p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const confirmButton = document.getElementById('confirmButton');
+    const backButton = document.getElementById('backButton');
+    const submitButton = document.getElementById('submitButton');
+
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const step3 = document.getElementById('step3');
+
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const telInput = document.getElementById('tel');
+    const inquiryTypeSelect = document.getElementById('inquiryType');
+    const inquiryContentTextarea = document.getElementById('inquiryContent');
+
+    const nameError = document.getElementById('name-error');
+    const emailError = document.getElementById('email-error');
+    const telError = document.getElementById('tel-error');
+    const inquiryTypeError = document.getElementById('inquiryType-error');
+    const inquiryContentError = document.getElementById('inquiryContent-error');
+
+    const confirmCompanyName = document.getElementById('confirmCompanyName');
+    const confirmName = document.getElementById('confirmName');
+    const confirmEmail = document.getElementById('confirmEmail');
+    const confirmTel = document.getElementById('confirmTel');
+    const confirmInquiryType = document.getElementById('confirmInquiryType');
+    const confirmInquiryContent = document.getElementById('confirmInquiryContent');
+    const confirmNotes = document.getElementById('confirmNotes');
+
+    // バリデーション関数
+    function validateName() {
+      if (!nameInput.value.trim()) {
+        nameInput.classList.add('error');
+        nameError.textContent = 'お名前を入力してください。';
+        nameInput.setAttribute('aria-invalid', 'true');
+        nameInput.setAttribute('aria-describedby', 'name-error');
+        return false;
+      } else {
+        nameInput.classList.remove('error');
+        nameError.textContent = '';
+        nameInput.removeAttribute('aria-invalid');
+        nameInput.removeAttribute('aria-describedby');
+        return true;
+      }
+    }
+
+    function validateEmail() {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailInput.value.trim()) {
+        emailInput.classList.add('error');
+        emailError.textContent = 'メールアドレスを入力してください。';
+        emailInput.setAttribute('aria-invalid', 'true');
+        emailInput.setAttribute('aria-describedby', 'email-error');
+        return false;
+      } else if (!emailRegex.test(emailInput.value)) {
+        emailInput.classList.add('error');
+        emailError.textContent = '有効なメールアドレスを入力してください。';
+        emailInput.setAttribute('aria-invalid', 'true');
+        emailInput.setAttribute('aria-describedby', 'email-error');
+        return false;
+      } else {
+        emailInput.classList.remove('error');
+        emailError.textContent = '';
+        emailInput.removeAttribute('aria-invalid');
+        emailInput.removeAttribute('aria-describedby');
+        return true;
+      }
+    }
+
+    function validateTel() {
+      const telRegex = /^[0-9-]+$/;
+      const telValue = telInput.value.trim();
+      if (telValue && (!telRegex.test(telValue) || telValue.replace(/[^0-9]/g, '').length < 10 || telValue.replace(/[^0-9]/g, '').length > 11)) {
+        telInput.classList.add('error');
+        telError.textContent = '10桁または11桁の数字とハイフンで入力してください。';
+        telInput.setAttribute('aria-invalid', 'true');
+        telInput.setAttribute('aria-describedby', 'tel-error');
+        return false;
+      } else {
+        telInput.classList.remove('error');
+        telError.textContent = '';
+        telInput.removeAttribute('aria-invalid');
+        telInput.removeAttribute('aria-describedby');
+        return true;
+      }
+    }
+
+    function validateInquiryType() {
+      if (!inquiryTypeSelect.value) {
+        inquiryTypeSelect.classList.add('error');
+        inquiryTypeError.textContent = 'お問い合わせ種別を選択してください。';
+        inquiryTypeSelect.setAttribute('aria-invalid', 'true');
+        inquiryTypeSelect.setAttribute('aria-describedby', 'inquiryType-error');
+        return false;
+      } else {
+        inquiryTypeSelect.classList.remove('error');
+        inquiryTypeError.textContent = '';
+        inquiryTypeSelect.removeAttribute('aria-invalid');
+        inquiryTypeSelect.removeAttribute('aria-describedby');
+        return true;
+      }
+    }
+
+    function validateInquiryContent() {
+      if (!inquiryContentTextarea.value.trim()) {
+        inquiryContentTextarea.classList.add('error');
+        inquiryContentError.textContent = 'お問い合わせ内容を入力してください。';
+        inquiryContentTextarea.setAttribute('aria-invalid', 'true');
+        inquiryContentTextarea.setAttribute('aria-describedby', 'inquiryContent-error');
+        return false;
+      } else {
+        inquiryContentTextarea.classList.remove('error');
+        inquiryContentError.textContent = '';
+        inquiryContentTextarea.removeAttribute('aria-invalid');
+        inquiryContentTextarea.removeAttribute('aria-describedby');
+        return true;
+      }
+    }
+
+    // イベントリスナー
+    nameInput.addEventListener('blur', validateName);
+    nameInput.addEventListener('input', validateName);
+    emailInput.addEventListener('blur', validateEmail);
+    emailInput.addEventListener('input', validateEmail);
+    telInput.addEventListener('blur', validateTel);
+    telInput.addEventListener('input', validateTel);
+    inquiryTypeSelect.addEventListener('blur', validateInquiryType);
+    inquiryTypeSelect.addEventListener('input', validateInquiryType);
+    inquiryContentTextarea.addEventListener('blur', validateInquiryContent);
+    inquiryContentTextarea.addEventListener('input', validateInquiryContent);
+
+
+    confirmButton.addEventListener('click', () => {
+      const isNameValid = validateName();
+      const isEmailValid = validateEmail();
+      const isTelValid = validateTel();
+      const isInquiryTypeValid = validateInquiryType();
+      const isInquiryContentValid = validateInquiryContent();
+
+      if (isNameValid && isEmailValid && isTelValid && isInquiryTypeValid && isInquiryContentValid) {
+        // 確認画面に値をセット
+        confirmCompanyName.textContent = document.getElementById('companyName').value;
+        confirmName.textContent = nameInput.value;
+        confirmEmail.textContent = emailInput.value;
+        confirmTel.textContent = telInput.value;
+        confirmInquiryType.textContent = inquiryTypeSelect.value;
+        confirmInquiryContent.textContent = inquiryContentTextarea.value;
+        confirmNotes.textContent = document.getElementById('notes').value;
+
+        // ステップの切り替え
+        step1.style.display = 'none';
+        step2.style.display = 'block';
+
+        // プログレスバーの更新
+        document.querySelector('.progress-bar li:nth-child(1)').classList.add('completed');
+        document.querySelector('.progress-bar li:nth-child(2)').classList.add('active');
+        document.querySelector('.progress-bar li:nth-child(3)').classList.remove('active');
+      }
+    });
+
+    backButton.addEventListener('click', () => {
+      // ステップの切り替え
+      step2.style.display = 'none';
+      step1.style.display = 'block';
+
+      // プログレスバーの更新
+      document.querySelector('.progress-bar li:nth-child(1)').classList.remove('completed');
+      document.querySelector('.progress-bar li:nth-child(2)').classList.remove('active');
+      document.querySelector('.progress-bar li:nth-child(3)').classList.remove('active');
+    });
+
+
+    async function submitForm(formData) {
+      const response = await fetch('/api/form-submissions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          pageSlug: window.location.pathname.split('/').pop() || 'unknown',
+          formTitle: 'お問い合わせ',
+          formFields: Object.entries(formData).map(([key, value]) => ({
+            fieldName: key,
+            fieldLabel: document.querySelector(`label[for="${key}"]`)?.textContent?.replace('*', '').trim() || key,
+            value: String(value)
+          }))
+        })
+      });
+      return response;
+    }
+
+
+    submitButton.addEventListener('click', async () => {
+      submitButton.disabled = true;
+      submitButton.innerHTML = '送信中... <span class="loading-spinner"></span>';
+
+      const formData = {
+        companyName: document.getElementById('companyName').value,
+        name: nameInput.value,
+        email: emailInput.value,
+        tel: telInput.value,
+        inquiryType: inquiryTypeSelect.value,
+        inquiryContent: inquiryContentTextarea.value,
+        notes: document.getElementById('notes').value,
+      };
+
+      try {
+        const response = await submitForm(formData);
+
+        if (response.ok) {
+          // ステップの切り替え
+          step2.style.display = 'none';
+          step3.style.display = 'block';
+
+          // プログレスバーの更新
+          document.querySelector('.progress-bar li:nth-child(2)').classList.add('completed');
+          document.querySelector('.progress-bar li:nth-child(2)').classList.remove('active');
+          document.querySelector('.progress-bar li:nth-child(3)').classList.add('active');
+        } else {
+           const errorData = await response.json();
+           alert("送信に失敗しました。エラー: " + (errorData.message || "不明なエラー")); // より詳細なエラー表示
+           submitButton.disabled = false;
+           submitButton.innerHTML = '送信する';
+        }
+      } catch (error) {
+        alert("ネットワークエラーが発生しました。もう一度お試しください。");
+        submitButton.disabled = false;
+        submitButton.innerHTML = '送信する';
+      }
+    });
+  </script>
+</body>
+</html>
+  </main>
+  <footer class="footer">
+    <p>&copy; 2026 </p>
+  </footer>
+</body>
+</html>
